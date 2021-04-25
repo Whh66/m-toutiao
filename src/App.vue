@@ -1,14 +1,19 @@
 <template>
   <div id="app">
-    <h1>黑马</h1>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'APP'
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+.box {
+  width: 750px;
+  height: 64px;
+  background-color: pink;
+}
 </style>
