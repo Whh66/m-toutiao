@@ -8,8 +8,10 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use(
   function (config) {
-    const user = store.state.user
-    config.headers.Authorization = `Bearer ${user.token}`
+    const { user } = store.state
+    if (user && user.token) {
+      config.headers.Authorization = `Bearer ${user.token}`
+    }
     return config
   },
   function (error) {

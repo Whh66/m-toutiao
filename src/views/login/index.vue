@@ -1,7 +1,9 @@
 <template>
   <div class="login-container">
     <!-- 导航栏 -->
-    <van-nav-bar title="登录" class="page-nav-bar" />
+    <van-nav-bar title="登录" class="page-nav-bar">
+      <van-icon name="cross" slot="left" @click="$router.back()" />
+    </van-nav-bar>
     <!-- 导航栏 -->
 
     <!-- 登录表单 -->
@@ -70,6 +72,9 @@ export default {
         // console.log(res);
         this.$store.commit('setUser', data.data)
         this.$toast.success('登录成功')
+        // 4.根据请求响应结果执行后续操作
+        //  登录成功，跳回原来的页面
+        this.$router.back()
       } catch (err) {
         if (err.response.status === 400) {
           this.$toast.fail('手机号或验证码错误')
@@ -77,7 +82,6 @@ export default {
           this.$toast.fail('登录失败，请稍后重试')
         }
       }
-      // 4.根据请求响应结果执行后续操作
     },
     async onSendSms () {
       // 1. 校验手机号
