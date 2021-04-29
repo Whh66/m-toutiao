@@ -39,6 +39,19 @@ const routes = [{
       import('@/views/my')
   }
   ]
+},
+{
+  path: '/search',
+  name: 'search',
+  component: () =>
+    import('@/views/search')
+},
+{
+  path: '/article/:articleId',
+  name: 'article',
+  component: () =>
+    import('@/views/article'),
+  props: true // 开启路由传参，将路由动态参数映射到组件的 props 中，更推荐这种做法
 }
 ]
 
